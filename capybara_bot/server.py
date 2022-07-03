@@ -7,7 +7,7 @@ from telegram import Update
 from telegram.ext import (
     ContextTypes, CommandHandler, ApplicationBuilder, ConversationHandler, MessageHandler, filters,
 )
-from source import auth_mongo
+from capybara_bot.source import auth_mongo
 from capybara_bot.find_pic import get_picture_from_db
 
 
