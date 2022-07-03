@@ -33,6 +33,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def cute(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Send a picture of capybara
+    :param update: Update
+    :param context: Context
+    :return: await
+    """
     logging.info('async cute')
     # await context.bot.send_message(chat_id=update.effective_chat.id, text="You are welcome")
     await context.bot.send_photo(
@@ -41,6 +47,12 @@ async def cute(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def sticker(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Send a sticker with random capybara
+    :param update: Update
+    :param context: Context
+    :return: await
+    """
     logging.info('async sticker')
     await context.bot.send_sticker(
         chat_id=update.effective_chat.id, sticker=get_picture_from_db(mongo_client),
@@ -48,6 +60,12 @@ async def sticker(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def handle_else(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Handle any text
+    :param update: Update
+    :param context: Context
+    :return: Await
+    """
     logging.info('async else')
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
