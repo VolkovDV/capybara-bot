@@ -8,7 +8,7 @@ import pymongo
 
 from gridfs import GridFS
 
-from vars import (
+from capybara_bot.vars import (
     MONGO_HOST, MONGO_PASSWORD, MONGO_PORT, MONGO_USER, CAPYBARAS_DB, RESOURCES_PATH,
 )
 
