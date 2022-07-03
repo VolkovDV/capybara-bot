@@ -13,4 +13,10 @@ setup(
       author_email='volkovdmvd@gmail.com',
       packages=find_packages(),
       install_requires=required,
+      classifiers=[
+            "Programming Language :: Python :: 3.7",
+            "Programming Language :: Python :: 3.8",
+            "Programming Language :: Python :: 3.9",
+            "Programming Language :: Python :: 3.10",
+      ],
       )
