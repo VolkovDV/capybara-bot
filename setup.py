@@ -1,7 +1,11 @@
 """
 Setup module
 """
+import sys
+import os
 from setuptools import find_packages, setup
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 with open('requirements.txt', encoding='utf-8') as file:
     required = file.read().splitlines()
