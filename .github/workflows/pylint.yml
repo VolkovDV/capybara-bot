@@ -20,4 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py') --init-hook "import os, sys; sys.path.append('/opt/hostedtoolcache/'); print('LLLLL'); print(str(os.path.abspath(os.path.curdir)))"
+        pylint $(git ls-files '*.py') --init-hook "import os, sys; sys.path.append('/opt/hostedtoolcache/Python/3.9.13/x64/lib/python3.9/site-packages'); print('LLLLL'); print(str(os.path.abspath(os.path.curdir)))"
