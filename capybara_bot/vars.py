@@ -1,3 +1,6 @@
+"""
+vars for setting enviroment, connections, etc
+"""
 from os.path import join
 from pathlib import Path
 

@@ -1,12 +1,20 @@
+"""
+Module for getting random pictures from MongoDB
+"""
+from random import randint
+
 import gridfs
 import pymongo
 
-from random import randint
-
-from vars import CAPYBARAS_DB
+from capybara_bot.vars import CAPYBARAS_DB
 
 
 def get_picture_from_db(mongo_client: pymongo.MongoClient) -> bytes:
+    """
+    Returns one random picture in bytes formate
+    :param mongo_client: MongoClient
+    :return: bytes pictures
+    """
     capybaras_db = mongo_client[CAPYBARAS_DB]
     files = []
 

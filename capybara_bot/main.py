@@ -1,3 +1,6 @@
+"""
+Run server
+"""
 import os
 
 from capybara_bot.server import run_server
