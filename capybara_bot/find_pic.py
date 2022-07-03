@@ -6,7 +6,7 @@ from random import randint
 import gridfs
 import pymongo
 
-from vars import CAPYBARAS_DB
+from capybara_bot.vars import CAPYBARAS_DB
 
 
 def get_picture_from_db(mongo_client: pymongo.MongoClient) -> bytes:
