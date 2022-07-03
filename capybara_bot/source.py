@@ -1,9 +1,11 @@
+import logging
 import pymongo
 import os
 from gridfs import GridFS
-from pathlib import Path
 
-from vars import MONGO_HOST, MONGO_PASSWORD, MONGO_PORT, MONGO_USER, CAPYBARAS_DB
+from vars import (
+    MONGO_HOST, MONGO_PASSWORD, MONGO_PORT, MONGO_USER, CAPYBARAS_DB, RESOURCES_PATH,
+)
 
 
 def auth_mongo(
@@ -18,18 +20,17 @@ def auth_mongo(
     return pymongo.MongoClient(f"mongodb://{user}:{password}@{host}:{port}/")
 
 
-def gridfs_put(local_path: str, gridfs: GridFS) -> None:
+def _gridfs_put(local_path: str, gridfs: GridFS) -> None:
     for file in os.listdir(local_path):
         with open(os.path.join(local_path, file), 'rb') as f:
             contents = f.read()
             gridfs.put(contents, filename=str(file))
 
 
-mongo_client = auth_mongo()
-capybaras_db = mongo_client[CAPYBARAS_DB]
+def upload_pictures():
+    mongo_client = auth_mongo()
+    capybaras_db = mongo_client[CAPYBARAS_DB]
 
-fs = GridFS(capybaras_db)
+    fs = GridFS(capybaras_db)
 
-resources_path = os.path.join(Path.home(), 'collection')  # your own local path
-
-gridfs_put(resources_path, fs)
+    _gridfs_put(RESOURCES_PATH, fs)

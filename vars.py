@@ -1,6 +1,0 @@
-MONGO_HOST = '0.0.0.0'
-MONGO_PORT = '27018'
-MONGO_PASSWORD = 'example'
-MONGO_USER = 'root'
-
-CAPYBARAS_DB = 'capybaras'

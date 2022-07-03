@@ -2,9 +2,21 @@ version: "3.9"
 services:
   mongo:
     image: mongo
+    hostname: mongo
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     ports:
-      - 27018:27017
+      - 27017:27017
+    networks:
+      - inner_net
+  capybaras:
+    build: .
+    ports:
+      - 8443:8443
+    networks:
+      - inner_net
+networks:
+  inner_net:
+    name: innet_net

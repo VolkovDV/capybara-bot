@@ -5,7 +5,7 @@ from telegram.ext import (
     ContextTypes, CommandHandler, ApplicationBuilder, ConversationHandler, MessageHandler, filters,
 )
 
-from find_pic import get_picture_from_db
+from capybara_bot.find_pic import get_picture_from_db
 from source import auth_mongo
 
 logging.basicConfig(
