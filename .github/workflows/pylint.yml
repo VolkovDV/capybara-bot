@@ -20,4 +20,4 @@ jobs:
         pip install pylint==2.14.1
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py') --init-hook "import os, sys; import sys; sys.path.append('/home/runner/work/capybara-bot/capybara-bot'); sys.path.append('/home/runner/work/capybara-bot/capybara-bot'); sys.path.append('/home/runner/work/capybara-bot/capybara-bot/capybara_bot'); sys.path.append('/home/runner/work/capybara-bot/capybara_bot'); sys.path.append('/home/runner/work/capybara-bot'); print(sys.path)"
+        pylint $(git ls-files '*.py') --init-hook "import os, sys; import sys; sys.path.append('/home/runner/work/capybara-bot/capybara-bot'); sys.path.append('/home/runner/work/capybara-bot/capybara-bot'); sys.path.append('/home/runner/work/capybara-bot/capybara-bot/capybara_bot'); sys.path.append('/home/runner/work/capybara-bot/capybara_bot'); sys.path.append('/home/runner/work/capybara-bot'); print(sys.path); for f in os.scandir(os.curdir):;     print(f)"
