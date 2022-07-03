@@ -1,3 +1,6 @@
+"""
+Handlers and main logic of the bot.
+"""
 import logging
 
 from telegram import Update
@@ -17,6 +20,12 @@ mongo_client = auth_mongo()
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Command /start
+    :param update: update
+    :param context: context
+    :return: await
+    """
     logging.info('async start')
     await context.bot.send_message(
         chat_id=update.effective_chat.id, text=r"I'm a bot, please text me /cute or /sticker",

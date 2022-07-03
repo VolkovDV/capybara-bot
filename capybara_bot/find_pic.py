@@ -1,3 +1,6 @@
+"""
+Module for getting random pictures from MongoDB
+"""
 from random import randint
 
 import gridfs
