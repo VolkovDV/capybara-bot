@@ -4,9 +4,9 @@ from telegram import Update
 from telegram.ext import (
     ContextTypes, CommandHandler, ApplicationBuilder, ConversationHandler, MessageHandler, filters,
 )
-
-from capybara_bot.find_pic import get_picture_from_db
 from source import auth_mongo
+from capybara_bot.find_pic import get_picture_from_db
+
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -26,22 +26,32 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def cute(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logging.info('async cute')
     # await context.bot.send_message(chat_id=update.effective_chat.id, text="You are welcome")
-    await context.bot.send_photo(chat_id=update.effective_chat.id, photo=get_picture_from_db(mongo_client))
+    await context.bot.send_photo(
+        chat_id=update.effective_chat.id, photo=get_picture_from_db(mongo_client),
+    )
 
 
 async def sticker(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logging.info('async sticker')
-    await context.bot.send_sticker(chat_id=update.effective_chat.id, sticker=get_picture_from_db(mongo_client))
+    await context.bot.send_sticker(
+        chat_id=update.effective_chat.id, sticker=get_picture_from_db(mongo_client),
+    )
 
 
 async def handle_else(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logging.info('async else')
     await context.bot.send_message(
-        chat_id=update.effective_chat.id, text="😍🥰😘 Please use following commands:\n /cute or /sticker",
+        chat_id=update.effective_chat.id,
+        text="😍🥰😘 Please use following commands:\n /cute or /sticker",
     )
 
 
-def run_server(token: str):
+def run_server(token: str) -> None:
+    """
+    Run bot server with token
+    :param token: your uniq token
+    :return: None
+    """
     application = ApplicationBuilder().token(token).build()
 
     start_handler = CommandHandler('start', start)

@@ -1,7 +1,7 @@
+from random import randint
+
 import gridfs
 import pymongo
-
-from random import randint
 
 from vars import CAPYBARAS_DB
 

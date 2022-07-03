@@ -22,9 +22,9 @@ def auth_mongo(
 
 def _gridfs_put(local_path: str, gridfs: GridFS) -> None:
     for file in os.listdir(local_path):
-        with open(os.path.join(local_path, file), 'rb') as f:
-            contents = f.read()
-            gridfs.put(contents, filename=str(file))
+        with open(os.path.join(local_path, file), 'rb') as opened_file:
+            contents = opened_file.read()
+            gridfs.put(contents, filename=file)
 
 
 def upload_pictures():
