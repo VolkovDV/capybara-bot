@@ -1,6 +1,11 @@
+# -*- coding: utf-8 -*-
+"""Functions for working with MongoDB.
+Auth and upload data.
+"""
 import logging
-import pymongo
 import os
+import pymongo
+
 from gridfs import GridFS
 
 from vars import (
@@ -16,7 +21,7 @@ def auth_mongo(
         no_credentials: bool = False,
 ) -> pymongo.MongoClient:
     """
-    Function for auth with default values
+    Function for auth with default values.
     :param user: mongodb login
     :param password: password
     :param host: hostname
@@ -30,6 +35,12 @@ def auth_mongo(
 
 
 def _gridfs_put(local_path: str, gridfs: GridFS) -> None:
+    """
+    Put files in MongoDB.
+    :param local_path: from local path
+    :param gridfs: GridFS instance
+    :return: None
+    """
     for file in os.listdir(local_path):
         with open(os.path.join(local_path, file), 'rb') as opened_file:
             contents = opened_file.read()
@@ -37,6 +48,10 @@ def _gridfs_put(local_path: str, gridfs: GridFS) -> None:
 
 
 def upload_pictures():
+    """
+    Upload data into MongoDB.
+    :return: None
+    """
     mongo_client = auth_mongo()
     capybaras_db = mongo_client[CAPYBARAS_DB]
 
